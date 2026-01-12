@@ -1,10 +1,13 @@
 const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
 
-const db = new sqlite3.Database("./meapi.db", (err) => {
+const dbPath = path.join(__dirname, "meapi.db");
+
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error("DB connection error:", err.message);
+    console.error("❌ Failed to connect to SQLite:", err.message);
   } else {
-    console.log("Connected to SQLite database");
+    console.log("✅ SQLite database connected");
   }
 });
 
